@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObraSegura | Monitoramento Inteligente</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            <div>
+                <h1>ObraSegura</h1>
+                <span>Monitoramento inteligente</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="#" class="menu-item active"><span>▦</span> Dashboard</a>
+            <a href="#" class="menu-item"><span>🏗️</span> Obras</a>
+            <a href="#" class="menu-item"><span>📡</span> Sensores</a>
+            <a href="#" class="menu-item"><span>🚨</span> Alertas</a>
+            <a href="#" class="menu-item"><span>📋</span> Inspeções</a>
+            <a href="#" class="menu-item"><span>👷</span> Trabalhadores</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="system-status"></span>
+            Sistema operacional
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2>Dashboard</h2>
+                <p>Visão geral da segurança das obras</p>
+            </div>
+
+            <div class="user-area">
+                <div class="notification">🔔</div>
+                <div class="user-profile">
+                    <div class="avatar">LM</div>
+                    <div>
+                        <strong>Leandro Martins</strong>
+                        <span>Engenheiro</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- OBRA MONITORADA -->
+        <section class="work-header">
+            <div>
+                <span class="section-label">OBRA MONITORADA</span>
+                <h3 id="nomeObra">Carregando obra...</h3>
+                <p id="localObra">📍 Carregando localização...</p>
+            </div>
+
+            <div class="work-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>Monitoramento ativo</strong>
+                    <small id="ultimaAtualizacao">Atualizando dados...</small>
+                </div>
+            </div>
+
+            <button
+                    id="btnSimularOcorrencia"
+                    class="simulation-button"
+                    onclick="simularOcorrencia()">
+                🚨 Simular ocorrência
+            </button>
+        </section>
+
+        <!-- INDICADORES -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Obras monitoradas</span>
+                    <span class="stat-icon blue">🏗️</span>
+                </div>
+                <h2 id="totalObras">--</h2>
+                <p>Projeto ativo</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Sensores ativos</span>
+                    <span class="stat-icon green">📡</span>
+                </div>
+                <h2 id="totalSensores">--</h2>
+                <p>Funcionando normalmente</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Alertas pendentes</span>
+                    <span class="stat-icon orange">🚨</span>
+                </div>
+                <h2 id="totalAlertas">--</h2>
+                <p>Necessitam verificação</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Atividades monitoradas</span>
+                    <span class="stat-icon purple">📋</span>
+                </div>
+                <h2 id="totalAtividades">--</h2>
+                <p>Atividade cadastrada</p>
+            </div>
+
+        </section>
+
+        <!-- ALERTAS E MONITORAMENTO -->
+        <section class="content-grid">
+
+            <div class="panel alerts-panel">
+                <div class="panel-header">
+                    <div>
+                        <h3>Alertas recentes</h3>
+                        <p>Eventos identificados pelo sistema</p>
+                    </div>
+                    <a href="#" class="view-all">Ver todos →</a>
+                </div>
+
+                <div id="listaAlertas">
+                    <p class="loading-message">
+                        Carregando alertas do banco de dados...
+                    </p>
+                </div>
+            </div>
+
+            <!-- SENSOR -->
+            <div class="panel sensor-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Monitoramento</h3>
+                        <p>Status e leitura do sensor</p>
+                    </div>
+                </div>
+
+                <div class="sensor-visual">
+                    <div class="sensor-circle">
+                        <span>📡</span>
+                    </div>
+
+                    <h4 id="nomeSensor">Carregando sensor...</h4>
+                    <p id="tipoSensor">Sensor</p>
+
+                    <span class="sensor-active" id="statusSensor">
+                        ● CARREGANDO
+                    </span>
+                </div>
+
+                <div class="sensor-details">
+
+                    <div>
+                        <span>Localização</span>
+                        <strong id="localSensor">Carregando...</strong>
+                    </div>
+
+                    <div>
+                        <span>Obra</span>
+                        <strong id="obraSensor">Carregando...</strong>
+                    </div>
+
+                    <div>
+                        <span>Última leitura</span>
+                        <strong id="valorLeitura">Carregando...</strong>
+                    </div>
+
+                    <div>
+                        <span>Evento identificado</span>
+                        <strong id="descricaoLeitura">Carregando...</strong>
+                    </div>
+
+                    <div>
+                        <span>Status do alerta</span>
+                        <strong id="statusAlerta">Carregando...</strong>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ATIVIDADE -->
+        <section class="panel activity-panel">
+            <div class="panel-header">
+                <div>
+                    <h3>Atividade monitorada</h3>
+                    <p>Atividades em execução na obra</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <div class="activity-icon">🏗️</div>
+
+                <div class="activity-info">
+                    <strong id="nomeAtividade">Carregando atividade...</strong>
+                    <p id="descricaoAtividade">Monitoramento de segurança</p>
+                </div>
+
+                <span class="activity-status">Monitorada</span>
+            </div>
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="footer">
+            <p>
+                ObraSegura © 2026 |
+                Tecnologia que antecipa riscos.
+                Inteligência que protege vidas.
+            </p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
