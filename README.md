@@ -180,3 +180,12 @@ Também possui relação com:
 Desenvolvido para a **FIAP Global Solution 2026**.
 
 **ObraSegura — Tecnologia que antecipa riscos. Inteligência que protege vidas.**
+---
+
+## 📚 Documentação
+
+- [Arquitetura do Sistema](docs/arquitetura.md)
+- [Diagrama UML](docs/uml.md)
+- [Modelo do Banco de Dados](docs/modelo-banco.md)
+
+---
