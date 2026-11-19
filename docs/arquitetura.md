@@ -8,55 +8,56 @@ O sistema é composto por uma interface web, uma API REST desenvolvida em Java c
 
 ## 2. Arquitetura em Camadas
 
-### Frontend
+### 2.1 Frontend
+
 Responsável pela interface de interação com o usuário.
 
-Tecnologias:
+**Tecnologias:**
 - HTML5
 - CSS3
 - JavaScript
 - Chart.js
 
-Responsabilidades:
+**Responsabilidades:**
 - Exibir informações das obras;
 - Apresentar indicadores de monitoramento;
 - Exibir sensores, leituras e alertas;
 - Permitir a visualização e verificação de alertas;
 - Solicitar simulações de eventos.
 
-### API REST — Backend
+### 2.2 API REST — Backend
 
 Desenvolvida utilizando Java 21 e Spring Boot.
 
 Responsável por receber as requisições HTTP do frontend e encaminhá-las para as camadas responsáveis pelo processamento.
 
-Principais controllers:
+**Principais Controllers:**
 - MonitoramentoController
 - AlertaController
 - SimulacaoController
 - StatusController
 
-### Camada Service
+### 2.3 Camada Service
 
 Responsável pelas regras de negócio e processamento das informações.
 
-Principais responsabilidades:
+**Principais responsabilidades:**
 - Analisar eventos provenientes dos sensores;
 - Identificar situações potencialmente anormais;
 - Gerar alertas;
 - Gerenciar o fluxo de monitoramento.
 
-### Camada DAO
+### 2.4 Camada DAO
 
 Responsável pela comunicação com o banco de dados Oracle.
 
-Principais responsabilidades:
+**Principais responsabilidades:**
 - Consultar dados;
 - Persistir alertas;
 - Recuperar informações de monitoramento;
 - Atualizar o status dos alertas.
 
-### Banco de Dados
+### 2.5 Banco de Dados
 
 O projeto utiliza Oracle Database para armazenamento das informações relacionadas a:
 
@@ -113,3 +114,21 @@ Essa integração permitirá a transmissão de dados reais para o backend, ampli
 | Persistência | JDBC / DAO |
 | Monitoramento | Simulação de eventos |
 | Visualização | Dashboard Web |
+
+## 7. Diagrama da Arquitetura
+
+```mermaid
+flowchart TD
+    A[Usuário / Engenheiro de Segurança] --> B[Dashboard Web]
+    B --> C[HTML, CSS e JavaScript]
+    C --> D[API REST - Spring Boot]
+    D --> E[Controllers]
+    E --> F[Services]
+    F --> G[DAO]
+    G --> H[(Oracle Database)]
+
+    F --> I[Análise de Eventos]
+    I --> J[Monitoramento de Sensores]
+    J --> K[Gerenciamento de Alertas]
+    K --> G
+```
